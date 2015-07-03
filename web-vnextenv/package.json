@@ -4,6 +4,8 @@
 	"private": true,
 	"devDependencies": {
 		"bower": "latest",
-		"rimraf" : "latest"
+		"rimraf": "latest",
+		"gulp": "latest"
+		//"gulp-watch" : "latest"
 	}
 }

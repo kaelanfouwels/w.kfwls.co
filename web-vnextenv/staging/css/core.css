@@ -1,1 +1,20 @@
-﻿
+﻿h1 {
+	font-family : 'Open Sans';
+	font-size : 30px;
+}
+.linkContainer {
+	display : inline-block;
+	width : 100px;
+	height : 100px;
+	margin : 20px;
+	background-color : rgba(0, 0, 0, 0.20);
+	border-radius : 3px;
+}
+.linkContainerContents {
+	width: auto;
+    height: auto;
+    position: relative;
+	top : 50%;
+	margin-top : -15px;
+}
+
