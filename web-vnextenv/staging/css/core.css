@@ -39,10 +39,9 @@ h1 {
 }
 .pgpDialog {
 	height : auto;
-	width : 600px;
+	max-width : 600px;
 	position : relative;
 	margin : auto;
-	margin-top: -197.5px;
 }
 
 #PGPheading {
