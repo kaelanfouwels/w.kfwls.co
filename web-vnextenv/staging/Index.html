@@ -4,8 +4,8 @@
 	<link rel="stylesheet" href="./css/bootstrap.css" />
 	<link rel="stylesheet" href="./css/font-awesome.css" />
 	<link rel="stylesheet" href="./css/core.css" />
-    <meta charset="utf-8" />
-    <title>Kaelan Fouwels</title>
+	<meta charset="utf-8" />
+	<title>Kaelan Fouwels</title>
 </head>
 <body>
 	<div class="root">
@@ -37,7 +37,7 @@
 					<div class="linkContainer" onclick="togglePGPDialog(true)">
 						<div class="linkContainerContents">
 							<span class="text-center"><span class="fa fa-key" /></span>
-							<a class="text-center" onclick="">Pgp</a>
+							<a class="text-center" onclick="">PGP</a>
 						</div>
 					</div>
 				</div>
@@ -52,12 +52,12 @@
 					<div id="PGPdialogClose" onclick="togglePGPDialog(false)">
 						<span id="PGPdialogCloseContents" class="fa fa-close"></span>
 					</div>
-					
+
 				</div>
 				<div class="panel-body">
 					<iframe id="PGPframe" src="./pgp.txt" width="100%" height="200px"></iframe>
 					<div class="row" style="margin-bottom:5px">
-						<div class="col-md-2">Valiate at:</div>
+						<div class="col-md-2">Validate at</div>
 						<div class="col-md-3"><a href="https://keybase.io/kae">Keybase.io/kae</a></div>
 					</div>
 					<div class="row">
@@ -76,15 +76,15 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		function togglePGPDialog(show) {
+			var e = document.getElementById("pgpRootDialog");
+			if (show === true) {
+				e.style.display = 'block';
+			}
+			else
+				e.style.display = 'none';
+		}
+	</script>
 </body>
 </html>
-<script>
-	function togglePGPDialog(show) {
-		var e = document.getElementById("pgpRootDialog");
-		if (show === true) {
-			e.style.display = 'block';
-		}
-		else
-			e.style.display = 'none';
-	}
-</script>

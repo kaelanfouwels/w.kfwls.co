@@ -6,6 +6,5 @@
 		"bower": "latest",
 		"rimraf": "latest",
 		"gulp": "latest"
-		//"gulp-watch" : "latest"
 	}
 }
