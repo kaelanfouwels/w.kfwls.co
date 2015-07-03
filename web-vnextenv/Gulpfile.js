@@ -35,9 +35,13 @@ gulp.task('pages', function () {
 		.pipe(gulp.dest('./wwwroot/'));
 });
 
-gulp.task('fonta', function () {
-	return gulp.src('./bower_components/font-awesome/**/*')
-		.pipe(gulp.dest('./wwwroot/'));
+gulp.task('fonta-css', function () {
+	return gulp.src('./bower_components/font-awesome/css/*')
+		.pipe(gulp.dest('./wwwroot/css/'));
+});
+gulp.task('fonta-fonts', function () {
+	return gulp.src('./bower_components/font-awesome/fonts/*')
+		.pipe(gulp.dest('./wwwroot/fonts/'));
 });
 
 
@@ -48,4 +52,4 @@ gulp.task('watch', function () {
 });
 
 
-gulp.task('build', ['clean', 'bootstrap', 'jquery', 'styles', 'scripts', 'pages', 'fonta']);
+gulp.task('build', ['clean', 'bootstrap', 'jquery', 'styles', 'scripts', 'pages', 'fonta-css', 'fonta-fonts']);
