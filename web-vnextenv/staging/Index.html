@@ -25,20 +25,60 @@
 					<div class="linkContainer">
 						<div class="linkContainerContents">
 							<span class="text-center"><span class="fa fa-twitter" /></span>
-							<span class="text-center">Twitter</span>
+							<a href="https://www.twitter.com/kfwls" class="text-center">Twitter</a>
 						</div>
 					</div>
 					<div class="linkContainer">
 						<div class="linkContainerContents">
 							<span class="text-center"><span class="fa fa-github" /></span>
-							<span class="text-center">Github</span>
+							<a href="https://www.github.com/kfwls" class="text-center">Github</a>
 						</div>
 					</div>
-					<div class="linkContainer">
+					<div class="linkContainer" onclick="togglePGPDialog(true)">
 						<div class="linkContainerContents">
 							<span class="text-center"><span class="fa fa-key" /></span>
-							<span class="text-center">Pgp</span>
+							<a class="text-center" onclick="">Pgp</a>
 						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="root" id="pgpRootDialog" style="display:none">
+		<div class="pgpDialog">
+			<div class="panel panel-default ">
+				<div class="panel-heading">
+					<span class="panel-title" id="PGPheading">PGP</span>
+					<div id="PGPdialogClose" onclick="togglePGPDialog(false)">
+						<span id="PGPdialogCloseContents" class="fa fa-close"></span>
+					</div>
+					
+				</div>
+				<div class="panel-body">
+					<iframe id="PGPframe" src="./pgp.txt" width="100%" height="200px"></iframe>
+					<!--<div>
+						<p>Validate at: <a href="https://keybase.io/kae">&nbspKeybase.io/kae</a></p>
+						<span style="vertical-align:top">Mail to:</span>
+						<div style="display:inline-block; margin-left:30px">
+							<div><a href="mailto:kae@kfwls.co">kae@kfwls.co</a> (primary)</div>
+							<div><a href="mailto:kae@kfwls.co">kfouwels@outlook.com</a></div>
+						</div>
+					</div>-->
+					<div class="row" style="margin-bottom:5px">
+						<div class="col-md-2">Valiate at:</div>
+						<div class="col-md-3"><a href="https://keybase.io/kae">Keybase.io/kae</a></div>
+					</div>
+					<div class="row">
+						<div class="col-md-2">Mail to:</div>
+						<div class="col-md-4"><a href="mailto:kae@kfwls.co">kae@kfwls.co</a> (primary)</div>
+					</div>
+					<div class="row" style="margin-bottom:5px">
+						<div class="col-md-3 col-md-offset-2"><a href="mailto:kae@kfwls.co">kfouwels@outlook.com</a></div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-2">Huh?</div>
+						<div class="col-md-4"><a href="http://www.heureka.clara.net/sunrise/pgpwhat.htm">What is PGP?</a></div>
 					</div>
 				</div>
 			</div>
@@ -46,3 +86,13 @@
 	</div>
 </body>
 </html>
+<script>
+	function togglePGPDialog(show) {
+		var e = document.getElementById("pgpRootDialog");
+		if (show === true) {
+			e.style.display = 'block';
+		}
+		else
+			e.style.display = 'none';
+	}
+</script>
