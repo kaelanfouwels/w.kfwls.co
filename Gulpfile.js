@@ -21,17 +21,17 @@ gulp.task('jquery', function () {
 });
 
 gulp.task('styles', function () {
-	return gulp.src('./staging/css/*')
+	return gulp.src('./dev/css/*')
 		.pipe(gulp.dest('./wwwroot/css/'));
 });
 
 gulp.task('scripts', function () {
-	return gulp.src('./staging/js/*')
+	return gulp.src('./dev/js/*')
 		.pipe(gulp.dest('./wwwroot/js/'));
 });
 
 gulp.task('pages', function () {
-	return gulp.src('./staging/*')
+	return gulp.src('./dev/*')
 		.pipe(gulp.dest('./wwwroot/'));
 });
 
@@ -46,9 +46,9 @@ gulp.task('fonta-fonts', function () {
 
 
 gulp.task('watch', function () {
-	gulp.watch('./staging/css/*', ['styles']);
-	gulp.watch('./staging/js/*', ['scripts']);
-	gulp.watch('./staging/*', ['pages']);
+	gulp.watch('./dev/css/*', ['styles']);
+	gulp.watch('./dev/js/*', ['scripts']);
+	gulp.watch('./dev/*', ['pages']);
 });
 
 
