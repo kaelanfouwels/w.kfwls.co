@@ -6,4 +6,4 @@ Installation
 ----
 `npm install`.. me
 
-(npm postinstall does bower and a `gulp build`)
+(npm postinstall does bower and a `gulp build`) - will create and compile into /wwwroot
