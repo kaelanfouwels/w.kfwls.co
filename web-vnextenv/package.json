@@ -8,6 +8,6 @@
 		"gulp": "latest"
 	},
 	"scripts": {
-    "postinstall": "gulp build"
+    "postinstall": "bower install; gulp build"
   }
 }
