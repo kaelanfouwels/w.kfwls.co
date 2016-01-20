@@ -21,7 +21,7 @@ bld/
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
-[Bb]uild[Ll]og.* 
+[Bb]uild[Ll]og.*
 
 #NUNIT
 *.VisualState.xml
@@ -193,3 +193,5 @@ wwwroot/
 
 node_modules/
 bower_components/
+
+.DS_Store
