@@ -6,5 +6,8 @@
 		"bower": "latest",
 		"rimraf": "latest",
 		"gulp": "latest"
-	}
+	},
+	"scripts": {
+    "postinstall": "gulp build"
+  }
 }
