@@ -5,7 +5,8 @@
 	"devDependencies": {
 		"bower": "latest",
 		"rimraf": "latest",
-		"gulp": "latest"
+		"gulp": "latest",
+		"gulp-newer": "latest"
 	},
 	"scripts": {
     "postinstall": "bower install; gulp build"
