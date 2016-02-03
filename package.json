@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "bower": "latest",
-    "rimraf": "latest",
+    "cssmin": "^0.4.3",
     "gulp": "latest",
+    "gulp-minify-css": "^1.2.3",
     "gulp-newer": "latest",
-		"require-dir": "^0.3.0"
+    "require-dir": "^0.3.0",
+    "rimraf": "latest"
   },
   "scripts": {
     "postinstall": "bower install; gulp build"
