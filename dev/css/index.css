@@ -44,12 +44,13 @@ h1 {
 	display: inline-block;
 }
 .pgpDialog {
-	position : absolute;
-	width : 100%;
-	height : auto;
+	position: fixed;
+	width: 560px;
+	left: 50%;
 	top : 20%;
-	margin-top : 0;
+	margin-left: -280px;
 	display: none;
+	opacity: 0;
 }
 .center{
 	position: absolute;
@@ -59,4 +60,8 @@ h1 {
 }
 .footerContents{
 	margin: 10px;
+}
+
+.mainContainer{
+	margin-top: 5%;
 }
