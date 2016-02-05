@@ -1,32 +1,35 @@
-var element = document.getElementById("pgpRootDialog");
 var duration = 250;
+var currentEscapeDialog;
 
-function SetOpa(o) {
+function SetOpa(element, o) {
 	element.style.opacity = o;
 }
 
-function FadeOut() {
-	setTimeout("element.style.display = 'none'", duration);
+function FadeOut(element) {
+	setTimeout(element + ".style.display = 'none'", duration);
 	for (i = 0; i <= 1; i += 0.01) {
-		setTimeout("SetOpa(" + (1 - i) +")", i * duration);
+		setTimeout(SetOpa(element, 1 - i), i * duration);
 	}
 }
-function FadeIn() {
+function FadeIn(element) {
 	element.style.display = 'block';
 	for (i = 0; i <= 1; i += 0.01) {
-		setTimeout("SetOpa(" + i +")", i * duration);
+		setTimeout(SetOpa(element,i), i * duration);
 	}
 }
-function togglePGPDialog(show) {
+
+function toggleDialog(id, show) {
+	var element = document.getElementById(id);
+	currentEscapeDialog = element;
 	if (show) {
-		FadeIn();
+		FadeIn(element);
 	}
 	else {
-		FadeOut();
+		FadeOut(element);
 	}
 }
 function keyhandler(e) {
 	if (e.keyCode == 27)
-		FadeOut();
+		FadeOut(currentEscapeDialog);
 }
 document.onkeydown = keyhandler;
