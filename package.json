@@ -3,17 +3,20 @@
   "name": "WebApplication1",
   "private": true,
   "dependencies": {
-    "bower": "latest",
-    "cssmin": "^0.4.3",
-    "gulp": "^3.9.0",
-    "gulp-coffee": "^2.3.1",
-    "gulp-minify-css": "^1.2.3",
-    "gulp-newer": "^1.1.0",
-    "gulp-stylus": "^2.3.0",
-    "gulp-uglify": "^1.5.1",
-    "require-dir": "^0.3.0",
-    "rimraf": "^2.5.1"
+
   },
+	"devDependencies":{
+		"bower": "latest",
+		"cssmin": "^0.4.3",
+		"gulp": "^3.9.0",
+		"gulp-coffee": "^2.3.1",
+		"gulp-minify-css": "^1.2.3",
+		"gulp-newer": "^1.1.0",
+		"gulp-stylus": "^2.3.0",
+		"gulp-uglify": "^1.5.1",
+		"require-dir": "^0.3.0",
+		"rimraf": "^2.5.1"
+	},
   "scripts": {
     "postinstall": "bower install; gulp build"
   }

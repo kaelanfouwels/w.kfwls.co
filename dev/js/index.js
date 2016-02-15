@@ -1,22 +1,22 @@
-var duration = 25000;
-var currentEscapeDialog;
+var duration = 250;
+var escapdlg;
 
 function fOut(element) {
 	setTimeout(element + ".style.display = 'none'", duration);
 	for (i = 1; i >= 0; i -= 0.01) {
-		setTimeout(element.style.opacity = i, i * duration);
+		setTimeout(function(){element.style.opacity = i;}, i * duration);
 	}
 }
 function fIn(element) {
 	element.style.display = 'block';
 	for (i = 0; i <= 1; i += 0.01) {
-		setTimeout(element.style.opacity = i, i * duration);
+		setTimeout(function(){ element.style.opacity = i;}, i * duration);
 	}
 }
 
 function toggleDialog(id, show) {
 	var element = document.getElementById(id);
-	currentEscapeDialog = element;
+	escapdlg = element;
 	if (show) {
 		fIn(element);
 	}
@@ -26,6 +26,6 @@ function toggleDialog(id, show) {
 }
 function keyhandler(e) {
 	if (e.keyCode == 27)
-		fOut(currentEscapeDialog);
+		fOut(escapdlg);
 }
 document.onkeydown = keyhandler;
