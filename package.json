@@ -23,6 +23,6 @@
     "rimraf": "^2.5.2"
   },
   "scripts": {
-    "postinstall": "bower install; gulp build"
+    "postinstall": "bower install; gulp build;"
   }
 }

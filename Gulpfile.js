@@ -1,2 +1,2 @@
 var requireDir = require('require-dir');
-var dir = requireDir('./gulpfile');
+var dir = requireDir('./gulpfile/core');
