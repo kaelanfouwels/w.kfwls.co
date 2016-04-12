@@ -9,54 +9,58 @@ html(lang="en")
 		title Kaelan Fouwels
 	body
 		.container-fluid.mainContainer
-			.row
-				.col-md-12.text-center
-					h1 Kaelan Fouwels
-			.row
-				.text-center
-					| Holding page
-			.row
-				.text-center
-					.linkContainer
-						.linkContainerContents
-							.text-center
-								span.fa.fa-twitter
-								a.text-center(href='https://www.twitter.com/kfwls')  Twitter
-					.linkContainer
-						.linkContainerContents
-							.text-center
-								span.fa.fa-github
-								a.text-center(href='https://www.github.com/kfwls')  Github
-					.linkContainer(onclick='toggleDialog("pgpDialog",true)')
-						.linkContainerContents
-							.text-center
-								span.fa.fa-key
-								a.text-center  PGP
-		.panel.panel-default.pgpDialog#pgpDialog
-			.panel-heading(style='position:relative' onclick='toggleDialog("pgpDialog",false)')
-				span.PGPheading.panel-title PGP
-				span.fa.fa-close( style='position:absolute;top:10px;right:4px;').center
-			.panel-body
-				iframe(src='./pgp.txt', width='530px', height='200px')
-				.row(style='margin-bottom:5px;margin-top:5px')
-					.col-md-2
-						|Validate at
-					.col-md-3
-						a(href='https://keybase.io/kae') Keybase.io/kae
 				.row
-					.col-md-2 Mail to:
-					.col-md-3
-						a(href='mailto:kae@kfwls.co') kae@kfwls.co
-						|	(primary)
-				.row(style='margin-bottom:5px')
-					.col-md-3.col-md-offset-2
-						a(href='mailto:kae@kfwls.co') kfouwels@outlook.com
+					.col-md-12.text-center
+						h1#title Kaelan Fouwels
 				.row
-					.col-md-2 ?
-					.col-md-3
-						a(href='http://www.heureka.clara.net/sunrise/pgpwhat.htm') What is PGP?
-		.footer
-			.footerContents
-				span
-					| Source 
-					a(href='http://www.github.com/kfwls/w.kfwls.co') on github
+					.text-center
+						.h7#subtitle Holding page
+				.row
+					.text-center
+						.linkContainer
+							.linkContainerContents
+								.text-center
+									span.fa.fa-twitter
+									a.text-center(href='https://www.twitter.com/kfwls')  Twitter
+						.linkContainer
+							.linkContainerContents
+								.text-center
+									span.fa.fa-github
+									a.text-center(href='https://www.github.com/kfwls')  Github
+						.linkContainer(onclick='toggleDialog("pgpDialog",true)')
+							.linkContainerContents
+								.text-center
+									span.fa.fa-key
+									a.text-center  PGP
+			.panel.panel-default.pgpDialog#pgpDialog
+				.panel-heading(style='position:relative' onclick='toggleDialog("pgpDialog",false)')
+					span.PGPheading.panel-title PGP
+					span.fa.fa-close( style='position:absolute;top:10px;right:4px;').center
+				.panel-body
+					iframe(src='./pgp.txt', width='530px', height='200px')
+					
+					.row(style='margin-bottom:5px;margin-top:5px')
+						.col-md-2
+							.text Validate at
+						.col-md-3
+							a(href='https://keybase.io/kae') Keybase.io/kae
+					.row
+						.col-md-2 
+							.text Mail to:
+						.col-md-3
+							a(href='mailto:kae@kfwls.co') kae@kfwls.co
+							.text &nbsp&nbsp (primary)
+							
+					.row
+						.col-md-3.col-md-offset-2
+							a(href='mailto:kae@kfwls.co') kfouwels@outlook.com
+					.row
+						.col-md-2 
+							.text ?
+						.col-md-3
+							a(href='http://www.heureka.clara.net/sunrise/pgpwhat.htm')
+							.text What is PGP?
+			.footer
+				.footerContents
+					span
+						#[a(href='http://www.github.com/kfwls/w.kfwls.co') Source] #[text on github]
