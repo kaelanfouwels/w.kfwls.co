@@ -1,4 +1,4 @@
-var duration = 250;
+/*var duration = 250;
 var escapdlg;
 
 function fOut(element) {
@@ -29,3 +29,4 @@ function keyhandler(e) {
 		fOut(escapdlg);
 }
 document.onkeydown = keyhandler;
+*/
