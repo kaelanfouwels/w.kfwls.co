@@ -4,10 +4,7 @@ p{
 ul{
     margin: 0px;
 }
-.body {
-    line-height: 1.4
-}
-.footer {
+.layout-footer {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -16,21 +13,33 @@ ul{
     line-height: normal;
     padding: 10px
 }
-.paragraph{
+.layout-paragraph{
+    margin-top: 0px;
     margin-bottom: 6px;
 }
 h1{
     font-size: 18px;
+    font-family: sans-serif;
+    font-weight: 700;
     margin: 0px;
 }
-.title{
-    margin-top: 0px;
-    font-size: 18px;
-    margin-bottom: 6px;
+.style-icons-social{
+    width: 30px;
+    height: 30px;
 }
-.subtitle{
-    font-size: 10px;
-    font-weight: normal;
+.kill-style-hover{
+    text-decoration: none !important;
+    border:0px !important;
+    outline:none;
+    border-width: 0px;
+    outline-width:0px;
+    border-bottom: none;
+}
+.title{
+    font-size: 18px;
+}
+span{
+    display: inline;
 }
 
 .container-fluid{
