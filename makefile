@@ -2,14 +2,15 @@
 #
 # SPDX-License-Identifier: MIT
 
+release: clean build test
+	npx webpack --mode="production"
+	ls -lah dist
+
 build:
 	npm install
 	npx ts-standard --fix "lib/**/*.tsx" "index.tsx"
 	mkdir -p dist
 	cp -r ./static/** dist
-
-release: clean build test
-	npx webpack --mode="production"
 
 live: build
 	npx webpack serve --mode="development"

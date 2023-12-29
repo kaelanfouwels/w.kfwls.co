@@ -8,7 +8,7 @@ import * as ReactRouter from 'react-router-dom'
 import { Main } from './lib/views/main'
 import { RoutingError } from './lib/views/error'
 
-function banner(): undefined {
+function banner (): undefined {
   console.log(
     '** additional logs emitted at verbose/debug log levels **'
   )
