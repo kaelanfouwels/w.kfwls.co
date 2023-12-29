@@ -10,7 +10,7 @@ body {
 }
 
 a {
-    color: black;
+    color: unset;
     text-decoration: none;
 }
 

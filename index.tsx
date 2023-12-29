@@ -16,7 +16,6 @@ function banner (): undefined {
   )
 }
 banner()
-
 const router = ReactRouter.createHashRouter([
   {
     path: '',

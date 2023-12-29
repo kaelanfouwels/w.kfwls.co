@@ -63,8 +63,6 @@ export async function RFC5245 (callback: RFC5245Callback): Promise<void> {
   }, () => { })
 }
 
-
-
 export function Knock (): React.ReactElement {
   const [candidate, setCandidate] = React.useState<Candidate | undefined>()
 
