@@ -17,13 +17,14 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: 'artifact'
+          name: 'github-pages'
           path: 'artifact.tar'
           if-no-files-found: error
 
   deploy:
     needs: package
     runs-on: ubuntu-latest
+    name: Deploy (Github Pages)
     permissions:
       pages: write
       id-token: write
