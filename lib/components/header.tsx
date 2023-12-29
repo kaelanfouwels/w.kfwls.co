@@ -5,16 +5,17 @@
 import * as React from 'react'
 import * as Polaris from '@cloudscape-design/components'
 import { PolarisTopNavigation } from '../../localisation/en-gb'
-
-import { Candidate, Knock } from '../exp/knock'
+import { Inspect } from '../exp/panopticon'
 
 export function Header (): React.ReactElement {
-  const [candidate, setCandidate] = React.useState<Candidate | undefined>()
+  const [identifier, setIdentifier] = React.useState<string | undefined>()
 
   React.useEffect(() => {
-    void Knock((c: Candidate) => {
-      setCandidate(c)
-    })
+    const run = async (): Promise<void> => {
+      const fingerprint = await Inspect()
+      setIdentifier(String(fingerprint.computedHandle))
+    }
+    void run()
   }, [])
 
   const identity: Polaris.TopNavigationProps.Identity = {
@@ -29,7 +30,7 @@ export function Header (): React.ReactElement {
   const utilities: Polaris.TopNavigationProps.Utility[] = [
     {
       type: 'button',
-      text: candidate === undefined ? 'Identifier Not Known' : `${candidate?.transport ?? ''} ${candidate?.port ?? ''} ${candidate?.priority ?? ''} ${candidate?.connectionAddress ?? ''}`,
+      text: identifier === undefined ? 'Identifier Not Known' : identifier,
       iconName: 'user-profile'
     }
   ]

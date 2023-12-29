@@ -5,6 +5,8 @@
 import * as Polaris from '@cloudscape-design/components'
 
 import { Navigation } from '../components/navigation'
+import { Panopticon } from '../exp/panopticon'
+import { Knock } from '../exp/knock'
 
 export function Experiments (): React.ReactElement {
   const breadcrumbs = [
@@ -19,11 +21,10 @@ export function Experiments (): React.ReactElement {
   ]
   const content = (
     <Polaris.ContentLayout header={<Polaris.Header variant='h1'>Experiments</Polaris.Header>}>
-      <Polaris.Container>
-        <Polaris.TextContent>
-          None active
-        </Polaris.TextContent>
-      </Polaris.Container>
+      <Polaris.SpaceBetween size='m' direction='vertical'>
+        <Panopticon />
+        <Knock />
+      </Polaris.SpaceBetween>
     </Polaris.ContentLayout>
   )
   return (

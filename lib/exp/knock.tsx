@@ -2,6 +2,9 @@
 //
 // SPDX-License-Identifier: MIT
 
+import * as Polaris from '@cloudscape-design/components'
+import * as React from 'react'
+
 // https://datatracker.ietf.org/doc/html/rfc5245#section-15.1
 /* candidate-attribute   = "candidate" ":" foundation SP component-id SP
                            transport SP
@@ -23,10 +26,10 @@ export interface Candidate {
   port: string
 }
 
-type KnockCallback = (c: Candidate) => void
+type RFC5245Callback = (c: Candidate) => void
 
 // Get user's local ip mask
-export async function Knock (callback: KnockCallback): Promise<void> {
+export async function RFC5245 (callback: RFC5245Callback): Promise<void> {
   const pc = new RTCPeerConnection({
     iceServers: [{ urls: 'stun:stun.services.mozilla.com' }]
   })
@@ -46,7 +49,7 @@ export async function Knock (callback: KnockCallback): Promise<void> {
       connectionAddress: ice.candidate.candidate.split(' ')[4] ?? '',
       port: ice.candidate.candidate.split(' ')[5] ?? ''
     }
-    console.debug('hacks::Knock: got candidate: ' + ice.candidate.candidate)
+    console.debug('exp::Knock: got candidate: ' + ice.candidate.candidate)
     callback(c)
   }
 
@@ -58,4 +61,33 @@ export async function Knock (callback: KnockCallback): Promise<void> {
     // fire a stun server request
     void pc.setLocalDescription(result, () => { }, () => { })
   }, () => { })
+}
+
+
+
+export function Knock (): React.ReactElement {
+  const [candidate, setCandidate] = React.useState<Candidate | undefined>()
+
+  React.useEffect(() => {
+    const run = async (): Promise<void> => {
+      void RFC5245((c: Candidate) => {
+        setCandidate(c)
+      })
+    }
+    void run()
+  }, [])
+
+  return (
+    <>
+      <Polaris.Container>
+        <Polaris.SpaceBetween size='m' direction='vertical'>
+          <Polaris.Header>
+            Knock
+          </Polaris.Header>
+          <Polaris.TextContent>WebRTC identifies you as:</Polaris.TextContent>
+          <Polaris.Textarea value={JSON.stringify(candidate, null, ' ')} rows={8} />
+        </Polaris.SpaceBetween>
+      </Polaris.Container>
+    </>
+  )
 }
