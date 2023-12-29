@@ -15,12 +15,6 @@ export function Navigation (): React.ReactElement {
       href: '#/main',
       external: false
     },
-    {
-      type: 'link',
-      text: 'Experiments',
-      href: '#/experiments',
-      external: false
-    },
     { type: 'divider' },
     {
       type: 'link',
@@ -78,6 +72,13 @@ export function Navigation (): React.ReactElement {
       text: 'NPM',
       href: 'https://www.npmjs.com/~kaelanfouwels',
       external: true
+    },
+    { type: 'divider' },
+    {
+      type: 'link',
+      text: 'Experimental',
+      href: '#/experiments',
+      external: false
     },
     { type: 'divider' },
     {
