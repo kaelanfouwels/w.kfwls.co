@@ -13,7 +13,7 @@ build:
 	cp -r ./static/** dist
 
 package: release
-	cd dist && tar -czvf ../github-pages.tar.gz . 
+	cd dist && tar -czvf ../artifact.tar.gz . 
 
 live: build
 	npx webpack serve --mode=development

@@ -33,7 +33,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: 'github-pages'
-          path: 'github-pages.tar.gz'
+          name: 'artifact'
+          path: 'artifact.tar.gz'
           if-no-files-found: error
           compression-level: 0 # Already compressed
