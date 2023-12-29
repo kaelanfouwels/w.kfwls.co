@@ -50,7 +50,7 @@ export function Navigation (): React.ReactElement {
     { type: 'divider' },
     {
       type: 'link',
-      text: 'Github',
+      text: 'GitHub',
       href: 'https://github.com/fouwels',
       external: true
     },
@@ -76,7 +76,7 @@ export function Navigation (): React.ReactElement {
     { type: 'divider' },
     {
       type: 'link',
-      text: 'Experiment',
+      text: 'Experiments',
       href: '#/experiments',
       external: false
     },
