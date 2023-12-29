@@ -13,7 +13,7 @@ build:
 	cp -r ./static/** dist
 
 package: release
-	cd dist && tar -czvf ../artifact.tar.gz . 
+	cd dist && tar -vf ../artifact.tar . 
 
 live: build
 	npx webpack serve --mode=development

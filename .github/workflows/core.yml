@@ -15,14 +15,6 @@ jobs:
       - name: REUSE Compliance Check
         uses: fsfe/reuse-action@v2
 
-  release:
-    runs-on: ubuntu-latest
-    name: Release (Make)
-    steps:
-      - uses: actions/checkout@v4
-      - name: release application
-        run: make release
-
   package:
     runs-on: ubuntu-latest
     name: Package (Make)
@@ -34,6 +26,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: 'artifact'
-          path: 'artifact.tar.gz'
+          path: 'artifact.tar'
           if-no-files-found: error
-          compression-level: 0 # Already compressed
