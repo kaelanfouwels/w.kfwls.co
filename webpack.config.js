@@ -40,9 +40,7 @@ module.exports = {
         ]
     },
 
-    stats: 'summary',
-
-    devtool: "eval-source-map",
+    devtool: "source-map",
 
     devServer: {
         port: 9000,
@@ -51,5 +49,6 @@ module.exports = {
         static: {
             directory: "static",
         },
+        https: true
     },
 }

@@ -19,7 +19,7 @@ const breadcrumbs = [
 
 export function RoutingError (): React.ReactElement {
   const content = (
-    <Polaris.ContentLayout header={<Polaris.Header variant='h1'>Error</Polaris.Header>}>
+    <Polaris.ContentLayout header={<Polaris.Header variant='h1'>Routing Error</Polaris.Header>}>
       <Polaris.Container>
         <Polaris.TextContent>You have been routed to nowhere... :'(</Polaris.TextContent>
       </Polaris.Container>

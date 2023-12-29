@@ -5,22 +5,25 @@
 import * as Polaris from '@cloudscape-design/components'
 
 import { Navigation } from '../components/navigation'
-import { Bio } from '../components/bio'
 
-export function Main (): React.ReactElement {
+export function Experiments (): React.ReactElement {
   const breadcrumbs = [
     {
-      text: 'Main',
-      href: '#/main'
+      text: 'Experiments',
+      href: '#/experiments'
     },
     {
-      text: 'Dashboard',
-      href: '#/main'
+      text: 'Main',
+      href: '#/experiments'
     }
   ]
   const content = (
-    <Polaris.ContentLayout header={<Polaris.Header variant='h1'>Main</Polaris.Header>}>
-      <Bio />
+    <Polaris.ContentLayout header={<Polaris.Header variant='h1'>Experiments</Polaris.Header>}>
+      <Polaris.Container>
+        <Polaris.TextContent>
+          None active
+        </Polaris.TextContent>
+      </Polaris.Container>
     </Polaris.ContentLayout>
   )
   return (
