@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2023 Kaelan Thijs Fouwels <kaelan.thijs@fouwels.com>
+//
+// SPDX-License-Identifier: MIT
 
 // https://datatracker.ietf.org/doc/html/rfc5245#section-15.1
 /* candidate-attribute   = "candidate" ":" foundation SP component-id SP
