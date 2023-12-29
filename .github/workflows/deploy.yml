@@ -1,0 +1,36 @@
+# SPDX-FileCopyrightText: 2020 Kaelan Thijs Fouwels <kaelan.thijs@fouwels.com>
+#
+# SPDX-License-Identifier: MIT
+on:
+  push:
+    branches:
+      - mainline
+name: Core
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    name: Package (Make)
+    steps:
+      - uses: actions/checkout@v4
+      - name: release application
+        run: make package
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: 'artifact'
+          path: 'artifact.tar'
+          if-no-files-found: error
+
+  deploy:
+    needs: package
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
