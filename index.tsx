@@ -7,6 +7,7 @@ import * as ReactRouter from 'react-router-dom'
 
 import { Main } from './lib/views/main'
 import { RoutingError } from './lib/views/error'
+import { Header } from './lib/components/header'
 
 function banner (): undefined {
   console.log(
@@ -18,12 +19,12 @@ banner()
 const router = ReactRouter.createHashRouter([
   {
     path: '',
-    element: <Main />,
+    element: <><Header /><Main /></>,
     errorElement: <RoutingError />
   },
   {
     path: '/main',
-    element: <Main />,
+    element: <><Header /><Main /></>,
     errorElement: <RoutingError />
   }
 ])
