@@ -7,6 +7,14 @@ on:
       - mainline
 name: Core
 jobs:
+  licencing:
+    runs-on: ubuntu-latest
+    name: Licensing (SPDX)
+    steps:
+      - uses: actions/checkout@v4
+      - name: REUSE Compliance Check
+        uses: fsfe/reuse-action@v2
+
   package:
     runs-on: ubuntu-latest
     name: Package (Make)
@@ -22,7 +30,7 @@ jobs:
           if-no-files-found: error
 
   deploy:
-    needs: package
+    needs: [package, licencing]
     runs-on: ubuntu-latest
     name: Deploy (Github Pages)
     permissions:
