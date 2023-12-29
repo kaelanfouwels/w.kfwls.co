@@ -6,9 +6,14 @@ var path = require('path');
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+
 module.exports = {
 
-    plugins: [new MiniCssExtractPlugin({ filename: "webpack.css" })],
+    plugins: [
+        new MiniCssExtractPlugin({ filename: "webpack.css" }),
+        //new BundleAnalyzerPlugin.BundleAnalyzerPlugin()
+    ],
 
     entry: path.join(__dirname, "index.tsx"),
     output: {
@@ -34,6 +39,8 @@ module.exports = {
             path.join(__dirname, "node_modules")
         ]
     },
+
+    stats: 'summary',
 
     devtool: "eval-source-map",
 
