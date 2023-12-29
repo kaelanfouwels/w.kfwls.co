@@ -82,8 +82,8 @@ export function Knock (): React.ReactElement {
           <Polaris.Header>
             Knock
           </Polaris.Header>
-          <Polaris.TextContent>WebRTC identifies you as:</Polaris.TextContent>
-          <Polaris.Textarea value={JSON.stringify(candidate, null, ' ')} rows={8} />
+          <Polaris.TextContent>WebRTC last identified you as:</Polaris.TextContent>
+          <Polaris.Textarea readOnly value={JSON.stringify(candidate, null, ' ')} rows={8} />
         </Polaris.SpaceBetween>
       </Polaris.Container>
     </>

@@ -15,7 +15,7 @@ export function Header (): React.ReactElement {
   React.useEffect(() => {
     const run = async (): Promise<void> => {
       const fingerprint = await Inspect()
-      setIdentifier(String(fingerprint.computedHandle))
+      setIdentifier(String(fingerprint.computed.handle))
     }
     void run()
   }, [])
