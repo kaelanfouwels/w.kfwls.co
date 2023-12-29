@@ -21,7 +21,7 @@ export function Header (): React.ReactElement {
     href: '#',
     title: 'Fouwels',
     logo: {
-      src: 'favicon-32x32.png',
+      src: 'favicon-192x192.png',
       alt: 'Fouwels Icon'
     }
   }
