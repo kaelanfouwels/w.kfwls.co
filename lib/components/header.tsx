@@ -10,7 +10,7 @@ import * as PolarisStyles from '@cloudscape-design/global-styles'
 
 export function Header (): React.ReactElement {
   const [identifier, setIdentifier] = React.useState<string | undefined>()
-  const [dark, setDark] = React.useState(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  const [dark, setDark] = React.useState(window.matchMedia('(prefers-color-scheme: dark)').matches)
 
   React.useEffect(() => {
     const run = async (): Promise<void> => {
