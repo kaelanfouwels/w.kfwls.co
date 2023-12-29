@@ -76,7 +76,7 @@ export function Navigation (): React.ReactElement {
     { type: 'divider' },
     {
       type: 'link',
-      text: 'Experimental',
+      text: 'Experiment',
       href: '#/experiments',
       external: false
     },
