@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MIT
 
 release: clean build test
-	npx webpack --mode="production"
+	npx webpack --mode=production
 	ls -lah dist
 
 build:
@@ -13,7 +13,7 @@ build:
 	cp -r ./static/** dist
 
 live: build
-	npx webpack serve --mode="development"
+	npx webpack serve --mode=development
 
 test:
 # We don't have tests yet

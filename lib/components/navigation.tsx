@@ -15,6 +15,70 @@ export function Navigation (): React.ReactElement {
       href: '#/main',
       external: false
     },
+    {
+      type: 'link',
+      text: 'Experiments',
+      href: '#/experiments',
+      external: false
+    },
+    { type: 'divider' },
+    {
+      type: 'link',
+      text: 'Contact (Email)',
+      href: 'mailto:kaelan.thijs@fouwels.com',
+      external: false
+    },
+    { type: 'divider' },
+    {
+      type: 'link',
+      text: 'LinkedIn',
+      href: 'https://www.linkedin.com/in/kaelanfouwels/',
+      external: true
+    },
+    {
+      type: 'link',
+      text: 'Twitter',
+      href: 'https://twitter.com/kaelanfouwels',
+      external: true
+    },
+    {
+      type: 'link',
+      text: 'StackExchange',
+      href: 'https://stackoverflow.com/users/2045964/kaelan-fouwels',
+      external: true
+    },
+    {
+      type: 'link',
+      text: 'Keybase',
+      href: 'https://keybase.io/kae',
+      external: true
+    },
+    { type: 'divider' },
+    {
+      type: 'link',
+      text: 'Github',
+      href: 'https://github.com/fouwels',
+      external: true
+    },
+    {
+      type: 'link',
+      text: 'Git.fouwels.com',
+      href: 'https://git.fouwels.com/explore/repos',
+      external: true
+    },
+    { type: 'divider' },
+    {
+      type: 'link',
+      text: 'Nuget',
+      href: 'https://www.nuget.org/profiles/kaelanfouwels',
+      external: true
+    },
+    {
+      type: 'link',
+      text: 'NPM',
+      href: 'https://www.npmjs.com/~kaelanfouwels',
+      external: true
+    },
     { type: 'divider' },
     {
       type: 'link',
