@@ -12,6 +12,9 @@ build:
 	mkdir -p dist
 	cp -r ./static/** dist
 
+package: release
+	cd dist && tar -czvf ../github-pages.tar.gz . 
+
 live: build
 	npx webpack serve --mode=development
 
