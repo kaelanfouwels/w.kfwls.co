@@ -35,14 +35,51 @@ export interface fingerprint {
     legacyAppVersion: string | undefined
     legacyProductSub: string | undefined
     legacyVendor: string | undefined
-    mediaDevices: string[] | undefined
+    mediaDevices: MediaDeviceInfo[] | undefined
+    networkInfo: NetworkInformation | undefined
+    fontData: FontData[] | undefined
   }
+}
+
+// https://wicg.github.io/netinfo/#-dfn-networkinformation-dfn-interface
+interface NetworkInformation {
+  type: string
+  effectiveType: string
+  downlinkMax: string
+  downlink: string
+  rtt: string
+};
+
+// https://wicg.github.io/netinfo/#-dfn-networkinformation-dfn-interface
+interface FontData {
+  postscriptName: string
+  fullName: string
+  family: string
+  style: string
 }
 
 // Get user's fingerprint
 export async function Inspect (): Promise<fingerprint> {
   const gl = document.createElement('canvas').getContext('webgl')
   const ext = gl?.getExtension('WEBGL_debug_renderer_info')
+
+  let fontData: FontData[] | undefined
+  try {
+    // https://wicg.github.io/local-font-access/
+    const localFonts = await (window as any).queryLocalFonts()
+    fontData = localFonts !== undefined ? localFonts as FontData[] : undefined
+  } catch (e: any) {
+    console.debug('exp::Inspect: failed to grab local fonts:' + String(e))
+  }
+
+  let networkInfo: NetworkInformation | undefined
+  try {
+    // https://wicg.github.io/netinfo/#-dfn-networkinformation-dfn-interface
+    const connection = (navigator as any).connection
+    networkInfo = connection !== undefined ? connection as NetworkInformation : undefined
+  } catch (e: any) {
+    console.debug('exp::Inspect: failed to get NetworkInformation:' + JSON.stringify(e))
+  }
 
   const records = {
     userAgent: navigator.userAgent,
@@ -58,14 +95,16 @@ export async function Inspect (): Promise<fingerprint> {
     webGLRenderer: gl?.getParameter(WebGLRenderingContext.RENDERER),
     webGLHwVendor: ext !== undefined && ext !== null ? gl?.getParameter(ext.UNMASKED_VENDOR_WEBGL) : undefined,
     webGLHwRender: ext !== undefined && ext !== null ? gl?.getParameter(ext.UNMASKED_RENDERER_WEBGL) : undefined,
-    webGLExtensions: gl?.getSupportedExtensions()?.join(' '),
+    webGLExtensions: gl?.getSupportedExtensions() !== undefined ? 'sha256-' + Buffer.from(await crypto.subtle.digest('SHA-256', (new TextEncoder()).encode(gl?.getSupportedExtensions()?.join(' ')))).toString('base64') : undefined,
     featurePDF: navigator.pdfViewerEnabled,
     featureDoNotTrack: navigator.doNotTrack !== null ? navigator.doNotTrack : undefined,
     featureCookies: navigator.cookieEnabled,
     legacyAppVersion: navigator.appVersion !== '' ? navigator.appVersion : undefined,
     legacyProductSub: navigator.productSub !== '' ? navigator.productSub : undefined,
     legacyVendor: navigator.vendor !== '' ? navigator.vendor : undefined,
-    mediaDevices: (await navigator.mediaDevices.enumerateDevices()).map((x) => `${x.deviceId} ${x.groupId} ${x.kind} ${x.label}`)
+    mediaDevices: (await navigator.mediaDevices.enumerateDevices()).filter(x => x.deviceId !== '' || x.groupId !== '' || x.label !== ''),
+    networkInfo,
+    fontData
   }
 
   const values = Object.values(records).toString()
