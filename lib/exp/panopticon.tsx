@@ -32,12 +32,30 @@ export interface fingerprint {
     featurePDF: boolean | undefined
     featureDoNotTrack: string | undefined
     featureCookies: boolean | undefined
-    featureFonts: string[] | undefined
     legacyAppVersion: string | undefined
     legacyProductSub: string | undefined
     legacyVendor: string | undefined
-    mediaDevices: string[] | undefined
+    mediaDevices: MediaDeviceInfo[] | undefined
+    networkInfo: NetworkInformation | undefined
+    fontData: FontData[] | undefined
   }
+}
+
+//https://wicg.github.io/netinfo/#-dfn-networkinformation-dfn-interface
+interface NetworkInformation {
+  type: string
+  effectiveType: string
+  downlinkMax: string
+  downlink: string
+  rtt: string
+};
+
+//https://wicg.github.io/netinfo/#-dfn-networkinformation-dfn-interface
+interface FontData {
+  postscriptName: string
+  fullName: string
+  family: string
+  style: string
 }
 
 // Get user's fingerprint
@@ -45,19 +63,25 @@ export async function Inspect (): Promise<fingerprint> {
   const gl = document.createElement('canvas').getContext('webgl')
   const ext = gl?.getExtension('WEBGL_debug_renderer_info')
 
-  let fonts: string[] | undefined
+  let fontData: FontData[] | undefined
   try {
-    fonts = (await (window as any).queryLocalFonts()).map((x: any) => `${String(x.postscriptName)}-${String(x.style)}`)
+    // https://wicg.github.io/local-font-access/
+    const localFonts = await (window as any).queryLocalFonts()
+    fontData = localFonts !== undefined ? localFonts as FontData[] : undefined
   } catch (e: any) {
     console.debug('exp::Inspect: failed to grab local fonts:' + String(e))
   }
 
-  let mediaDevices: string[] | undefined
+  let networkInfo: NetworkInformation | undefined
   try {
-    mediaDevices = (await navigator.mediaDevices.enumerateDevices()).map((x: MediaDeviceInfo) => `${x.deviceId}-${x.groupId}-${x.kind}-${x.label}`)
+    //https://wicg.github.io/netinfo/#-dfn-networkinformation-dfn-interface
+    const connection = (navigator as any).connection
+    networkInfo = connection !== undefined ? connection as NetworkInformation : undefined
   } catch (e: any) {
-    console.debug('exp::Inspect: failed to grab media devices:' + JSON.stringify(e))
+    console.debug('exp::Inspect: failed to get NetworkInformation:' + JSON.stringify(e))
   }
+
+
   const records = {
     userAgent: navigator.userAgent,
     timeIANA: Intl.DateTimeFormat().resolvedOptions().timeZone,
@@ -76,11 +100,12 @@ export async function Inspect (): Promise<fingerprint> {
     featurePDF: navigator.pdfViewerEnabled,
     featureDoNotTrack: navigator.doNotTrack !== null ? navigator.doNotTrack : undefined,
     featureCookies: navigator.cookieEnabled,
-    featureFonts: fonts,
     legacyAppVersion: navigator.appVersion !== '' ? navigator.appVersion : undefined,
     legacyProductSub: navigator.productSub !== '' ? navigator.productSub : undefined,
     legacyVendor: navigator.vendor !== '' ? navigator.vendor : undefined,
-    mediaDevices
+    mediaDevices: (await navigator.mediaDevices.enumerateDevices()).filter(x => x.deviceId != "" || x.groupId != "" || x.label != ""),
+    networkInfo: networkInfo,
+    fontData: fontData,
   }
 
   const values = Object.values(records).toString()
