@@ -34,7 +34,14 @@ export async function windowQueryLocalFonts (): Promise<FontData[] | undefined> 
     return undefined
   }
 
-  return localfonts.map((x) => x)
+  return localfonts.map((x) => {
+    return {
+      postscriptName: x.postscriptName,
+      fullName: x.fullName,
+      family: x.family,
+      style: x.style
+    }
+  })
 }
 
 // https://wicg.github.io/netinfo/#-dfn-networkinformation-dfn-interface
