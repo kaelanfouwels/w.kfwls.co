@@ -8,6 +8,7 @@ import * as React from 'react'
 import { bufferToMnemonic } from './mnemonic'
 import { Buffer } from 'buffer'
 import { crc32 } from '@foxglove/crc'
+import { FontData, NetworkInformation, navigationConnection, windowQueryLocalFonts } from './browser'
 
 export interface fingerprint {
   computed: {
@@ -41,45 +42,10 @@ export interface fingerprint {
   }
 }
 
-// https://wicg.github.io/netinfo/#-dfn-networkinformation-dfn-interface
-interface NetworkInformation {
-  type: string
-  effectiveType: string
-  downlinkMax: string
-  downlink: string
-  rtt: string
-};
-
-// https://wicg.github.io/netinfo/#-dfn-networkinformation-dfn-interface
-interface FontData {
-  postscriptName: string
-  fullName: string
-  family: string
-  style: string
-}
-
 // Get user's fingerprint
 export async function Inspect (): Promise<fingerprint> {
   const gl = document.createElement('canvas').getContext('webgl')
   const ext = gl?.getExtension('WEBGL_debug_renderer_info')
-
-  let fontData: FontData[] | undefined
-  try {
-    // https://wicg.github.io/local-font-access/
-    const localFonts = await (window as any).queryLocalFonts()
-    fontData = localFonts !== undefined ? localFonts as FontData[] : undefined
-  } catch (e: any) {
-    console.debug('exp::Inspect: failed to grab local fonts:' + String(e))
-  }
-
-  let networkInfo: NetworkInformation | undefined
-  try {
-    // https://wicg.github.io/netinfo/#-dfn-networkinformation-dfn-interface
-    const connection = (navigator as any).connection
-    networkInfo = connection !== undefined ? connection as NetworkInformation : undefined
-  } catch (e: any) {
-    console.debug('exp::Inspect: failed to get NetworkInformation:' + JSON.stringify(e))
-  }
 
   const records = {
     userAgent: navigator.userAgent,
@@ -103,12 +69,12 @@ export async function Inspect (): Promise<fingerprint> {
     legacyProductSub: navigator.productSub !== '' ? navigator.productSub : undefined,
     legacyVendor: navigator.vendor !== '' ? navigator.vendor : undefined,
     mediaDevices: (await navigator.mediaDevices.enumerateDevices()).filter(x => x.deviceId !== '' || x.groupId !== '' || x.label !== ''),
-    networkInfo,
-    fontData
+    networkInfo: navigationConnection(), // https://wicg.github.io/netinfo/#-dfn-networkinformation-dfn-interface
+    fontData: await windowQueryLocalFonts() // https://wicg.github.io/local-font-access/
   }
 
-  const values = Object.values(records).toString()
-  const entropy = crc32(new TextEncoder().encode(values))
+  const recordString = JSON.stringify(records)
+  const entropy = crc32(new TextEncoder().encode(recordString))
 
   const b = Buffer.alloc(4)
   b.writeUInt32LE(entropy, 0)
@@ -144,7 +110,7 @@ export function Panopticon (): React.ReactElement {
             Panopticon
           </Polaris.Header>
           <Polaris.TextContent>You are identified as: <b>{fingerprint?.computed.handle}</b> ({fingerprint?.computed.handleMneumonic.join('-')}), based on:</Polaris.TextContent>
-          <Polaris.Textarea readOnly value={JSON.stringify(fingerprint?.records, null, ' ')} rows={24} />
+          <Polaris.Textarea readOnly value={JSON.stringify(fingerprint?.records, null, ' ')} rows={28} />
         </Polaris.SpaceBetween>
       </Polaris.Container>
     </>
