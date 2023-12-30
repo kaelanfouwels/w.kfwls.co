@@ -41,7 +41,7 @@ export interface fingerprint {
   }
 }
 
-//https://wicg.github.io/netinfo/#-dfn-networkinformation-dfn-interface
+// https://wicg.github.io/netinfo/#-dfn-networkinformation-dfn-interface
 interface NetworkInformation {
   type: string
   effectiveType: string
@@ -50,7 +50,7 @@ interface NetworkInformation {
   rtt: string
 };
 
-//https://wicg.github.io/netinfo/#-dfn-networkinformation-dfn-interface
+// https://wicg.github.io/netinfo/#-dfn-networkinformation-dfn-interface
 interface FontData {
   postscriptName: string
   fullName: string
@@ -74,13 +74,12 @@ export async function Inspect (): Promise<fingerprint> {
 
   let networkInfo: NetworkInformation | undefined
   try {
-    //https://wicg.github.io/netinfo/#-dfn-networkinformation-dfn-interface
+    // https://wicg.github.io/netinfo/#-dfn-networkinformation-dfn-interface
     const connection = (navigator as any).connection
     networkInfo = connection !== undefined ? connection as NetworkInformation : undefined
   } catch (e: any) {
     console.debug('exp::Inspect: failed to get NetworkInformation:' + JSON.stringify(e))
   }
-
 
   const records = {
     userAgent: navigator.userAgent,
@@ -103,9 +102,9 @@ export async function Inspect (): Promise<fingerprint> {
     legacyAppVersion: navigator.appVersion !== '' ? navigator.appVersion : undefined,
     legacyProductSub: navigator.productSub !== '' ? navigator.productSub : undefined,
     legacyVendor: navigator.vendor !== '' ? navigator.vendor : undefined,
-    mediaDevices: (await navigator.mediaDevices.enumerateDevices()).filter(x => x.deviceId != "" || x.groupId != "" || x.label != ""),
-    networkInfo: networkInfo,
-    fontData: fontData,
+    mediaDevices: (await navigator.mediaDevices.enumerateDevices()).filter(x => x.deviceId !== '' || x.groupId !== '' || x.label !== ''),
+    networkInfo,
+    fontData
   }
 
   const values = Object.values(records).toString()
