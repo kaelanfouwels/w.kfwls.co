@@ -26,7 +26,7 @@ export function Navigation (): React.ReactElement {
     {
       type: 'link',
       text: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/kaelanfouwels/',
+      href: 'https://www.linkedin.com/in/fouwels/',
       external: true
     },
     {
