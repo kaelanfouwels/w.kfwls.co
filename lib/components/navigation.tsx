@@ -83,13 +83,6 @@ export function Navigation (): React.ReactElement {
     { type: 'divider' },
     {
       type: 'link',
-      text: 'Console',
-      href: 'https://fouwels.signin.aws.amazon.com/console',
-      external: true
-    },
-    { type: 'divider' },
-    {
-      type: 'link',
       text: 'Source',
       href: 'https://github.com/fouwels/www',
       external: true
