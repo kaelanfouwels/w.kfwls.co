@@ -29,6 +29,12 @@ export function Navigation (): React.ReactElement {
       href: 'https://www.linkedin.com/in/fouwels/',
       external: true
     },
+     {
+      type: 'link',
+      text: 'ORCID',
+      href: 'https://orcid.org/0009-0008-5016-9468',
+      external: true
+    },
     {
       type: 'link',
       text: 'Twitter',
