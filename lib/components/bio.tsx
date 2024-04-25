@@ -34,7 +34,7 @@ export function Bio (): React.ReactElement {
         </Polaris.Header>
         <ul>
           <li>
-            CIRED 2021 - <a href='https://www.researchgate.net/publication/357762875_Enabling_cybersecurity_features_using_a_layered_connectivity_to_promote_secure_remote_operation_and_maintenance'><i>Enabling cybersecurity features using a layered connectivity to promote secure remote operation and maintenance</i></a> (2021)
+            CIRED 2021 - <a href='https://chooser.crossref.org/?doi=10.1049%2Ficp.2021.1691'><i>Enabling cybersecurity features using a layered connectivity to promote secure remote operation and maintenance</i></a> (2021)
           </li>
           <li>
             NGGT - <a href='https://www.nationalgas.com/document/136341/download#page=13'> <i>I40 Secure Connectivity</i> </a> (2021)
